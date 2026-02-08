@@ -1,0 +1,118 @@
+{% layout none %}<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+<channel>
+
+<title><![CDATA[{{ shop.name }} Product Feed]]></title>
+<link>{{ shop.url }}</link>
+<description><![CDATA[Google Shopping Feed for Indy]]></description>
+
+{% assign feed_collection = collections["google-feed"] %}
+
+{% paginate feed_collection.products by 1000 %}
+
+    {% for product in feed_collection.products %}
+        {% for variant in product.variants %}
+
+            {% unless variant.available %}
+                {% continue %}
+            {% endunless %}
+
+            <item>
+                <g:id><![CDATA[{{ variant.id }}]]></g:id>
+                <g:item_group_id><![CDATA[{{ product.id }}]]></g:item_group_id>
+
+                <title><![CDATA[{{ product.title | strip_html | truncate: 70, "" }}]]></title>
+
+                <link><![CDATA[{{ shop.url }}/products/{{ product.handle }}?variant={{ variant.id }}]]></link>
+
+                {% assign price = variant.price %}
+                {% assign compare = variant.compare_at_price %}
+
+                {% if compare and compare > price %}
+                    <g:price>{{ compare | money_without_currency | replace: ',', '' }} ARS</g:price>
+                    <g:sale_price>{{ price | money_without_currency | replace: ',', '' }} ARS</g:sale_price>
+                {% else %}
+                    <g:price>{{ price | money_without_currency | replace: ',', '' }} ARS</g:price>
+                {% endif %}
+
+                <description><![CDATA[{{ product.description | strip_html | truncate: 5000, "" }}]]></description>
+
+                <g:brand><![CDATA[{{ product.vendor }}]]></g:brand>
+                <g:product_type><![CDATA[{{ product.product_type }}]]></g:product_type>
+
+                <g:google_product_category><![CDATA[{% if product.product_type contains 'Zapatilla' or product.product_type contains 'Bota' or product.product_type contains 'Ojota' %}187{% elsif product.product_type contains 'Campera' %}5598{% elsif product.product_type contains 'Gorra' %}173{% elsif product.product_type contains 'Remera' or product.product_type contains 'Buzo' %}1604{% else %}166{% endif %}]]></g:google_product_category>
+
+                <g:image_link><![CDATA[{{ product.featured_image | img_url: 'master' | prepend: 'https:' }}]]></g:image_link>
+
+                {% for image in product.images limit:10 %}
+                    <g:additional_image_link><![CDATA[{{ image | img_url: 'master' | prepend: 'https:' }}]]></g:additional_image_link>
+                {% endfor %}
+
+                <g:condition>new</g:condition>
+                <g:availability>in stock</g:availability>
+
+                {% if variant.weight %}
+                    <g:shipping_weight><![CDATA[{{ variant.weight | times: 1000 }} g]]></g:shipping_weight>
+                {% endif %}
+
+                <g:gender><![CDATA[unisex]]></g:gender>
+                <g:age_group><![CDATA[adult]]></g:age_group>
+
+                {% assign raw_barcode = variant.barcode | default: '' | strip %}
+                {% assign gtin_clean = raw_barcode | remove: ' ' | remove: '-' | remove: '.' %}
+                {% assign non_digits = gtin_clean | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' %}
+                {% assign gtin_len = gtin_clean | size %}
+                {% assign format_ok = true %}
+                {% if gtin_clean == '' %}{% assign format_ok = false %}{% endif %}
+                {% if non_digits != '' %}{% assign format_ok = false %}{% endif %}
+                {% unless gtin_len == 8 or gtin_len == 12 or gtin_len == 13 or gtin_len == 14 %}{% assign format_ok = false %}{% endunless %}
+
+                {% assign checksum_ok = false %}
+                {% if format_ok %}
+                    {% assign digits = gtin_clean | split: '' %}
+                    {% assign rev = digits | reverse %}
+                    {% assign sum = 0 %}
+                    {% assign check_digit = 0 %}
+                    {% for d in rev %}
+                        {% assign n = d | plus: 0 %}
+                        {% if forloop.first %}
+                            {% assign check_digit = n %}
+                        {% else %}
+                            {% assign pos = forloop.index0 %}
+                            {% assign parity = pos | modulo: 2 %}
+                            {% if parity == 1 %}
+                                {% assign partial = n | times: 3 %}
+                            {% else %}
+                                {% assign partial = n %}
+                            {% endif %}
+                            {% assign sum = sum | plus: partial %}
+                        {% endif %}
+                    {% endfor %}
+                    {% assign mod = sum | modulo: 10 %}
+                    {% assign check_calc = 10 | minus: mod %}
+                    {% if check_calc == 10 %}{% assign check_calc = 0 %}{% endif %}
+                    {% if check_calc == check_digit %}{% assign checksum_ok = true %}{% endif %}
+                {% endif %}
+
+                {% if format_ok and checksum_ok %}
+                    <g:gtin><![CDATA[{{ gtin_clean }}]]></g:gtin>
+                    <g:mpn><![CDATA[{{ variant.sku }}]]></g:mpn>
+                    <g:identifier_exists><![CDATA[true]]></g:identifier_exists>
+                {% else %}
+                    <g:mpn><![CDATA[{{ variant.sku }}]]></g:mpn>
+                    <g:identifier_exists><![CDATA[false]]></g:identifier_exists>
+                {% endif %}
+
+                <g:size><![CDATA[{{ variant.option1 }}]]></g:size>
+
+                <g:color><![CDATA[{% if variant.title contains 'Negr' %}Negro{% elsif variant.title contains 'Azul' %}Azul{% elsif variant.title contains 'Blanc' %}Blanco{% elsif variant.title contains 'Rojo' %}Rojo{% elsif variant.title contains 'Verde' %}Verde{% elsif variant.title contains 'Gris' %}Gris{% elsif variant.title contains 'Amarill' %}Amarillo{% elsif variant.title contains 'Marrón' %}Marrón{% else %}Unico{% endif %}]]></g:color>
+
+            </item>
+
+        {% endfor %}
+    {% endfor %}
+
+{% endpaginate %}
+
+</channel>
+</rss>
