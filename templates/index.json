@@ -1,82 +1,45 @@
 {
   "sections": {
-    "hero_banner": {
-      "type": "banner-image",
-      "blocks": {
-        "hero_image": {
-          "type": "image_banner",
-          "settings": {
-            "banner_width": "12",
-            "banner_type": "image",
-            "image": "shopify://shop_images/DC_092022_S233_Mens_SellIn_LookBook_015060_1_copia.jpg",
-            "video_url": "",
-            "link": "",
-            "open_link": "_self",
-            "subtext": "",
-            "title": "Zapatillas y Ropa Deportiva",
-            "content": "Las mejores marcas al mejor precio",
-            "btn_content": "Ver Colecciones",
-            "button_type": "primary"
-          }
-        }
-      },
-      "block_order": [
-        "hero_image"
-      ],
+    "premium_hero": {
+      "type": "premium-hero",
       "settings": {
-        "heading_logo_svg": "",
-        "heading": "",
-        "description": "",
-        "text_alignment": "text-center",
-        "container": "full-width",
-        "color_scheme": "",
-        "column_gap": 0,
-        "layout_on_mobile": false,
-        "design_banner": "text-overlay-image",
-        "design_content": "default",
-        "text_align": "text-center",
-        "hover_effect": "none",
-        "h_font_size": 48,
-        "h_font_weight": "700",
-        "h_spacing": 10,
-        "sub_font_size": 18,
-        "sub_font_weight": "default",
-        "sub_spacing": 10,
-        "des_font_size": 16,
-        "des_font_weight": "default",
-        "des_spacing": 30,
-        "image_behavior": "none",
-        "text_position": "center",
-        "content_on_mobile": true,
-        "reset_color_mb": false,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "reset_spacing": true
+        "image": "shopify://shop_images/DC_092022_S233_Mens_SellIn_LookBook_015060_1_copia.jpg",
+        "image_mobile": "",
+        "overlay_opacity": 40,
+        "subheading": "Nueva Colección 2024",
+        "heading": "Estilo Que Define Tu Actitud",
+        "description": "Descubrí las últimas tendencias en zapatillas y ropa deportiva de las mejores marcas",
+        "button_text": "Explorar Ahora",
+        "button_link": "/collections/all",
+        "text_position": "text-center"
       }
     },
-    "clean_category_grid": {
-      "type": "clean-category-grid",
+    "premium_categories": {
+      "type": "premium-category-grid",
       "blocks": {
         "cat_zapatillas": {
           "type": "category",
           "settings": {
             "title": "Zapatillas",
+            "description": "Encontrá tu par perfecto",
             "collection": "zapatillas",
-            "image": ""
+            "image": "shopify://shop_images/DC_092022_S233_Mens_SellIn_LookBook_015060_1_copia.jpg"
           }
         },
         "cat_remeras": {
           "type": "category",
           "settings": {
             "title": "Remeras",
+            "description": "Estilo casual y deportivo",
             "collection": "remeras",
-            "image": ""
+            "image": "shopify://shop_images/Court_Graffik_Womans_OnBody_300678_Court_Graffik_KPS_0139.jpg"
           }
         },
         "cat_buzos": {
           "type": "category",
           "settings": {
             "title": "Buzos",
+            "description": "Comodidad todo el día",
             "collection": "buzos",
             "image": ""
           }
@@ -85,39 +48,8 @@
           "type": "category",
           "settings": {
             "title": "Pantalones",
+            "description": "Para cada ocasión",
             "collection": "pantalones",
-            "image": ""
-          }
-        },
-        "cat_camperas": {
-          "type": "category",
-          "settings": {
-            "title": "Camperas",
-            "collection": "camperas",
-            "image": ""
-          }
-        },
-        "cat_botas": {
-          "type": "category",
-          "settings": {
-            "title": "Botas",
-            "collection": "botas",
-            "image": ""
-          }
-        },
-        "cat_accesorios": {
-          "type": "category",
-          "settings": {
-            "title": "Accesorios",
-            "collection": "accesorios",
-            "image": ""
-          }
-        },
-        "cat_ofertas": {
-          "type": "category",
-          "settings": {
-            "title": "Ofertas",
-            "collection": "sale",
             "image": ""
           }
         }
@@ -126,54 +58,50 @@
         "cat_zapatillas",
         "cat_remeras",
         "cat_buzos",
-        "cat_pantalones",
-        "cat_camperas",
-        "cat_botas",
-        "cat_accesorios",
-        "cat_ofertas"
+        "cat_pantalones"
       ],
       "settings": {
-        "heading": "Explorá Nuestras Categorías",
-        "description": "Encontrá exactamente lo que buscás en nuestra selección curada de productos",
+        "subheading": "Nuestras Colecciones",
+        "heading": "Encontrá Tu Estilo",
         "container": "container",
         "bg_color": "#FFFFFF",
-        "padding_top": 64,
-        "padding_bottom": 64
+        "padding_top": 96,
+        "padding_bottom": 96
       }
     },
-    "clean_trust_bar": {
-      "type": "clean-trust-bar",
+    "premium_trust": {
+      "type": "premium-trust",
       "blocks": {
         "trust_cuotas": {
           "type": "benefit",
           "settings": {
-            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"1\" y=\"4\" width=\"22\" height=\"16\" rx=\"2\" ry=\"2\"></rect><line x1=\"1\" y1=\"10\" x2=\"23\" y2=\"10\"></line></svg>",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"1\" y=\"4\" width=\"22\" height=\"16\" rx=\"2\" ry=\"2\"></rect><line x1=\"1\" y1=\"10\" x2=\"23\" y2=\"10\"></line></svg>",
             "title": "6 Cuotas sin interés",
-            "subtitle": "Pagando con débito"
+            "subtitle": "Con tarjetas de débito"
           }
         },
         "trust_reviews": {
           "type": "benefit",
           "settings": {
-            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"></polygon></svg>",
-            "title": "+20.000 reseñas",
-            "subtitle": "4.9/5 estrellas"
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"></polygon></svg>",
+            "title": "+20.000 Clientes Felices",
+            "subtitle": "Calificación 4.9/5 estrellas"
           }
         },
         "trust_shipping": {
           "type": "benefit",
           "settings": {
-            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg>",
-            "title": "Envío gratis",
-            "subtitle": "Superiores a $180.000"
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg>",
+            "title": "Envío Gratis",
+            "subtitle": "En compras superiores a $180.000"
           }
         },
         "trust_returns": {
           "type": "benefit",
           "settings": {
-            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"23 4 23 10 17 10\"></polyline><path d=\"M20.49 15a9 9 0 1 1-2.12-9.36L23 10\"></path></svg>",
-            "title": "Cambios simples",
-            "subtitle": "Tenés 30 días"
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polyline points=\"23 4 23 10 17 10\"></polyline><path d=\"M20.49 15a9 9 0 1 1-2.12-9.36L23 10\"></path></svg>",
+            "title": "Cambios Fáciles",
+            "subtitle": "Hasta 30 días para cambios"
           }
         }
       },
@@ -185,9 +113,9 @@
       ],
       "settings": {
         "container": "container",
-        "bg_color": "#F9FAFB",
-        "padding_top": 40,
-        "padding_bottom": 40
+        "bg_color": "#FAFAFA",
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "brand_logos": {
@@ -277,7 +205,7 @@
       ],
       "settings": {
         "heading_logo_svg": "",
-        "heading": "Nuestras Marcas",
+        "heading": "Marcas Destacadas",
         "description": "",
         "text_alignment": "text-center",
         "container": "container",
@@ -303,8 +231,8 @@
         "show_arrow": false,
         "carousel_pagination": "carousel_none",
         "reveal_on_scroll": false,
-        "padding_top": 48,
-        "padding_bottom": 48,
+        "padding_top": 80,
+        "padding_bottom": 80,
         "reset_spacing": false
       }
     },
@@ -321,9 +249,9 @@
             "link": "shopify://collections/hombre",
             "open_link": "_self",
             "subtext": "",
-            "title": "",
+            "title": "Hombre",
             "content": "",
-            "btn_content": "HOMBRES",
+            "btn_content": "Comprar",
             "button_type": "secondary"
           }
         },
@@ -337,9 +265,9 @@
             "link": "shopify://collections/mujer",
             "open_link": "_self",
             "subtext": "",
-            "title": "",
+            "title": "Mujer",
             "content": "",
-            "btn_content": "MUJERES",
+            "btn_content": "Comprar",
             "button_type": "secondary"
           }
         }
@@ -355,14 +283,14 @@
         "text_alignment": "text-center",
         "container": "full-width",
         "color_scheme": "",
-        "column_gap": 0,
+        "column_gap": 16,
         "layout_on_mobile": false,
         "design_banner": "text-overlay-image",
         "design_content": "default",
         "text_align": "text-center",
-        "hover_effect": "none",
-        "h_font_size": 36,
-        "h_font_weight": "default",
+        "hover_effect": "zoom",
+        "h_font_size": 42,
+        "h_font_weight": "700",
         "h_spacing": 10,
         "sub_font_size": 18,
         "sub_font_weight": "default",
@@ -371,7 +299,7 @@
         "des_font_weight": "default",
         "des_spacing": 30,
         "image_behavior": "none",
-        "text_position": "bottom",
+        "text_position": "center",
         "content_on_mobile": false,
         "reset_color_mb": false,
         "padding_top": 0,
@@ -379,35 +307,35 @@
         "reset_spacing": true
       }
     },
-    "products_blackfriday": {
+    "products_featured": {
       "type": "products-carousel",
       "settings": {
         "heading_logo_svg": "",
-        "heading": "Ofertas Especiales",
+        "heading": "Productos Destacados",
         "description": "",
         "text_alignment": "text-center",
         "container": "container-fluid",
         "color_scheme": "",
         "collection": "blackfriday",
-        "limit_products": 16,
+        "limit_products": 12,
         "item_desktop": 6,
         "column_gap": 20,
         "item_mobile": false,
-        "carousel_autoplay": true,
-        "carousel_loop": false,
-        "carousel_arrows": false,
+        "carousel_autoplay": false,
+        "carousel_loop": true,
+        "carousel_arrows": true,
         "carousel_pagination": "carousel_bullets",
         "reveal_on_scroll": false,
-        "view_all_enable": false,
-        "text_view_all": "View All",
+        "view_all_enable": true,
+        "text_view_all": "Ver Todos",
         "enable_banner": false,
         "banner_type": "image",
         "video_url": "",
         "banner_position": "position-left",
         "banner_link": "",
         "banner_width": 30,
-        "padding_top": 48,
-        "padding_bottom": 48,
+        "padding_top": 80,
+        "padding_bottom": 80,
         "reset_spacing": false
       }
     },
@@ -416,7 +344,7 @@
       "settings": {
         "heading_logo_svg": "",
         "heading": "Timberland",
-        "description": "",
+        "description": "Calidad y estilo que perdura",
         "text_alignment": "text-center",
         "container": "container-fluid",
         "color_scheme": "",
@@ -427,51 +355,19 @@
         "item_mobile": false,
         "carousel_autoplay": false,
         "carousel_loop": true,
-        "carousel_arrows": false,
+        "carousel_arrows": true,
         "carousel_pagination": "carousel_bullets",
         "reveal_on_scroll": false,
         "view_all_enable": true,
-        "text_view_all": "Ver Todo",
+        "text_view_all": "Ver Colección",
         "enable_banner": false,
         "banner_type": "image",
         "video_url": "",
         "banner_position": "position-left",
         "banner_link": "",
         "banner_width": 15,
-        "padding_top": 48,
-        "padding_bottom": 48,
-        "reset_spacing": false
-      }
-    },
-    "products_asics": {
-      "type": "products-carousel",
-      "settings": {
-        "heading_logo_svg": "",
-        "heading": "Asics",
-        "description": "",
-        "text_alignment": "text-center",
-        "container": "container-fluid",
-        "color_scheme": "",
-        "collection": "asics",
-        "limit_products": 8,
-        "item_desktop": 6,
-        "column_gap": 20,
-        "item_mobile": false,
-        "carousel_autoplay": false,
-        "carousel_loop": true,
-        "carousel_arrows": false,
-        "carousel_pagination": "carousel_bullets",
-        "reveal_on_scroll": false,
-        "view_all_enable": true,
-        "text_view_all": "Ver Todo",
-        "enable_banner": false,
-        "banner_type": "image",
-        "video_url": "",
-        "banner_position": "position-left",
-        "banner_link": "",
-        "banner_width": 30,
-        "padding_top": 48,
-        "padding_bottom": 48,
+        "padding_top": 80,
+        "padding_bottom": 80,
         "reset_spacing": false
       }
     },
@@ -498,14 +394,13 @@
     }
   },
   "order": [
-    "hero_banner",
-    "clean_category_grid",
-    "clean_trust_bar",
+    "premium_hero",
+    "premium_categories",
+    "premium_trust",
     "brand_logos",
     "gender_banners",
-    "products_blackfriday",
+    "products_featured",
     "products_timberland",
-    "products_asics",
     "loox_reviews"
   ]
 }

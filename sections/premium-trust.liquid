@@ -1,0 +1,249 @@
+{%- liquid
+  assign container = section.settings.container
+  assign bg_color = section.settings.bg_color
+-%}
+
+<div class="premium-trust" style="background: {{ bg_color }}; padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;">
+  <div class="{{ container }}">
+    <div class="premium-trust-grid">
+      {%- for block in section.blocks -%}
+        <div class="premium-trust-item" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <div class="premium-trust-icon-wrapper">
+              <div class="premium-trust-icon">{{ block.settings.icon }}</div>
+            </div>
+          {%- endif -%}
+          <div class="premium-trust-content">
+            <h3 class="premium-trust-title">{{ block.settings.title }}</h3>
+            {%- if block.settings.subtitle != blank -%}
+              <p class="premium-trust-subtitle">{{ block.settings.subtitle }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .premium-trust {
+    position: relative;
+  }
+
+  .premium-trust::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #E5E7EB, transparent);
+  }
+
+  .premium-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+
+  .premium-trust-item {
+    text-align: center;
+    padding: 0 12px;
+  }
+
+  .premium-trust-icon-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .premium-trust-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 100%);
+    border-radius: 50%;
+    border: 2px solid #E5E7EB;
+    color: #111827;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .premium-trust-item:hover .premium-trust-icon {
+    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    border-color: #111827;
+    color: #FFFFFF;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .premium-trust-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .premium-trust-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .premium-trust-subtitle {
+    font-size: 15px;
+    color: #6B7280;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .premium-trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 32px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .premium-trust-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .premium-trust-icon {
+      width: 64px;
+      height: 64px;
+    }
+
+    .premium-trust-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .premium-trust-title {
+      font-size: 17px;
+    }
+
+    .premium-trust-subtitle {
+      font-size: 14px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Premium Trust Section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Default"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Fluid"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon (SVG)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Premium Trust Section",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"1\" y=\"4\" width=\"22\" height=\"16\" rx=\"2\" ry=\"2\"></rect><line x1=\"1\" y1=\"10\" x2=\"23\" y2=\"10\"></line></svg>",
+            "title": "6 Cuotas sin interés",
+            "subtitle": "Con tarjetas de débito"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"></polygon></svg>",
+            "title": "+20.000 Clientes Felices",
+            "subtitle": "Calificación 4.9/5 estrellas"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg>",
+            "title": "Envío Gratis",
+            "subtitle": "En compras superiores a $180.000"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polyline points=\"23 4 23 10 17 10\"></polyline><path d=\"M20.49 15a9 9 0 1 1-2.12-9.36L23 10\"></path></svg>",
+            "title": "Cambios Fáciles",
+            "subtitle": "Hasta 30 días para cambios"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
