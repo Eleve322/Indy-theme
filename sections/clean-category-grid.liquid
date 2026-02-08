@@ -1,0 +1,270 @@
+{%- liquid
+  assign heading = section.settings.heading
+  assign description = section.settings.description
+  assign container = section.settings.container
+-%}
+
+<div class="clean-cat-section" style="background: {{ section.settings.bg_color }}; padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;">
+  <div class="{{ container }}">
+    {%- if heading != blank or description != blank -%}
+      <div class="clean-cat-header" style="text-align: center; margin-bottom: 40px;">
+        {%- if heading != blank -%}
+          <h2 style="font-size: 28px; font-weight: 700; color: #111827; margin: 0 0 8px;">{{ heading }}</h2>
+        {%- endif -%}
+        {%- if description != blank -%}
+          <p style="font-size: 16px; color: #6B7280; margin: 0;">{{ description }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="clean-cat-grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign cat_title = block.settings.title
+          assign cat_collection = block.settings.collection
+          assign cat_image = block.settings.image
+        -%}
+        
+        <a href="{{ routes.collections_url }}/{{ cat_collection }}" class="clean-cat-card" {{ block.shopify_attributes }}>
+          {%- if cat_image != blank -%}
+            <div class="clean-cat-image">
+              <img 
+                src="{{ cat_image | image_url: width: 400 }}" 
+                alt="{{ cat_title }}"
+                width="400"
+                height="400"
+                loading="lazy"
+              >
+            </div>
+          {%- endif -%}
+          <h3 class="clean-cat-title">{{ cat_title }}</h3>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .clean-cat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .clean-cat-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 24px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  .clean-cat-card:hover {
+    border-color: #111827;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+
+  .clean-cat-image {
+    width: 100%;
+    max-width: 120px;
+    margin-bottom: 16px;
+  }
+
+  .clean-cat-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .clean-cat-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  @media (max-width: 1024px) {
+    .clean-cat-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .clean-cat-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    
+    .clean-cat-card {
+      padding: 20px;
+      min-height: 160px;
+    }
+    
+    .clean-cat-title {
+      font-size: 16px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Clean Category Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Default"
+        },
+        {
+          "value": "container-fluid",
+          "label": "Fluid"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Category"
+        },
+        {
+          "type": "text",
+          "id": "collection",
+          "label": "Collection handle",
+          "info": "Enter collection URL handle (e.g., 'zapatillas')"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clean Category Grid",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Zapatillas",
+            "collection": "zapatillas"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Remeras",
+            "collection": "remeras"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Buzos",
+            "collection": "buzos"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Pantalones",
+            "collection": "pantalones"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Camperas",
+            "collection": "camperas"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Botas",
+            "collection": "botas"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Accesorios",
+            "collection": "accesorios"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Ofertas",
+            "collection": "sale"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
