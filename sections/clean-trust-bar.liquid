@@ -27,36 +27,60 @@
   .clean-trust-bar {
     border-top: 1px solid #E5E7EB;
     border-bottom: 1px solid #E5E7EB;
+    position: relative;
+  }
+
+  .clean-trust-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #111827, transparent);
+    opacity: 0.1;
   }
 
   .trust-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+    gap: 48px;
   }
 
   .trust-item {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     text-align: left;
   }
 
   .trust-icon {
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #F9FAFB;
+    border-radius: 12px;
+    border: 2px solid #E5E7EB;
     color: #111827;
+    transition: all 0.3s ease;
+  }
+
+  .trust-item:hover .trust-icon {
+    background: #111827;
+    border-color: #111827;
+    color: #FFFFFF;
+    transform: scale(1.05);
   }
 
   .trust-icon svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     stroke: currentColor;
     fill: none;
+    stroke-width: 2;
   }
 
   .trust-content {
@@ -64,34 +88,44 @@
   }
 
   .trust-title {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     color: #111827;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+    letter-spacing: -0.2px;
   }
 
   .trust-subtitle {
-    font-size: 13px;
+    font-size: 14px;
     color: #6B7280;
+    line-height: 1.4;
   }
 
   @media (max-width: 1024px) {
     .trust-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 32px;
     }
   }
 
   @media (max-width: 640px) {
     .trust-grid {
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 24px;
     }
     
     .trust-item {
-      justify-content: center;
-      text-align: center;
-      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .trust-icon {
+      width: 48px;
+      height: 48px;
+    }
+
+    .trust-icon svg {
+      width: 24px;
+      height: 24px;
     }
   }
 </style>
