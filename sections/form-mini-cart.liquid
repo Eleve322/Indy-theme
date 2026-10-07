@@ -140,7 +140,7 @@
               {%- if settings.recommendation_product_type != 'auto' -%}
                 {%- for item in settings.select_product_recommendation -%}
                   <div class="swiper-slide">
-                    {%- render 'product-popular-list-item' | product: item | template_cart: true -%}
+                    {%- render 'product-popular-list-item', product: item, template_cart: true -%}
                   </div>
                 {%- endfor -%}
               {%- endif -%}
@@ -194,7 +194,7 @@
                   %}
                   {% if hidden == false %}
                   <div class="swiper-slide bls-cart-upsell-item">
-                    {%- render 'product-popular-list-item' | product: item | template_cart: true -%}
+                    {%- render 'product-popular-list-item', product: item, template_cart: true -%}
                   </div>
                 {% endif %}
                 {%- endfor -%}
@@ -352,7 +352,7 @@
             %}
             {% if hidden == false %}
               <div class="bls-cart-upsell-item">
-                {%- render 'product-popular-list-item' | product: item | template_cart: true -%}
+                {%- render 'product-popular-list-item', product: item, template_cart: true -%}
               </div>
             {% endif %}
           {%- endfor -%}
@@ -368,3 +368,25 @@
     {%- endif -%}
   </div>
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'product-popular-list-item' | product: item | template_cart: true
+    -%}"
+  to: "{%- render 'product-popular-list-item', product: item, template_cart: true
+    -%}"
+  position: 10739..10817
+- from: "{%- render 'product-popular-list-item' | product: item | template_cart: true
+    -%}"
+  to: "{%- render 'product-popular-list-item', product: item, template_cart: true
+    -%}"
+  position: 13143..13221
+- from: "{%- render 'product-popular-list-item' | product: item | template_cart: true
+    -%}"
+  to: "{%- render 'product-popular-list-item', product: item, template_cart: true
+    -%}"
+  position: 21580..21658
+{% endcomment %}

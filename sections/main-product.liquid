@@ -1390,7 +1390,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                           loading="lazy"
                                         >
                                       {%- else -%}
-                                        {%- render 'placeholder-render' | type: 'image' | cls: 'bls__collection-grid-plh' -%}
+                                        {%- render 'placeholder-render', type: 'image', cls: 'bls__collection-grid-plh' -%}
                                       {%- endif -%}
                                     {%- when '1' -%}
                                       {%- if bk_st.page != blank -%}
@@ -2785,4 +2785,15 @@ document.addEventListener('DOMContentLoaded', function() {
 {% endschema %}
 <script id="size-conversion-data" type="application/json">
   {{ size_conversion_raw }}
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'placeholder-render' | type: 'image' | cls: 'bls__collection-grid-plh'
+    -%}"
+  to: "{%- render 'placeholder-render', type: 'image', cls: 'bls__collection-grid-plh'
+    -%}"
+  position: 88665..88748
+{%- endcomment -%}
